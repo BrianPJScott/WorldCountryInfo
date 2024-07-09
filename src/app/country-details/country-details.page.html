@@ -1,0 +1,44 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>{{ myName }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="false">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">country-details</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <img alt="Flag" src={{myFlagPNG}} />
+    <ion-card-header>
+      <ion-card-title>{{myName}}</ion-card-title>
+      <ion-card-subtitle>Capital: {{myCapital}}</ion-card-subtitle>
+      <ion-card-subtitle>Forecast: {{myWeather}}</ion-card-subtitle>
+      <ion-card-subtitle>Population: {{myPopulation}}</ion-card-subtitle>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-card-title>Languages:</ion-card-title>
+      <ion-card-subtitle *ngFor = "let language of myLanguages">
+        <ion-card-subtitle>{{language}}</ion-card-subtitle>
+      </ion-card-subtitle>
+      <br>
+      <ion-card-title>Currencies:</ion-card-title>
+      <ion-card-subtitle *ngFor = "let currency of myCurrencies">
+        <ion-card-subtitle>{{currency}}</ion-card-subtitle>
+      </ion-card-subtitle>
+      <br>
+      <ion-card-title>Enter {{mainCurrencySym}} amount:</ion-card-title>
+      <ion-input label="Enter {{ mainCurrencySym }} amount:" type="number" placeholder="00.00" (ionInput)="inputFunc($event.target.value)"></ion-input>
+      <ion-button name="btnConvert" (click)="convert()" [disabled]="btnDisabled"> CONVERT TO EUR </ion-button>
+      <ion-card-subtitle>{{txtConvertResult}}</ion-card-subtitle>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>
+
+
